@@ -21,7 +21,7 @@ body {
   height: 100%;
   padding-left: 150px;
   padding-right: 150px;
-  padding-top: 80px;
+  padding-top: 40px;
   padding-bottom: 80px;
   overflow: hidden;
   background-image: url(/assets/2727.jpg);
@@ -44,9 +44,24 @@ body {
   display: inline-flex;
 }
 
-.scoreBlock {
+/* .scoreBlock {
   width: 319.42px;
   height: 134px;
+} */
+
+.scoreBlock {
+  font-family: "Irish Grover", cursive;
+  width: 319.42px;
+  height: 134px;
+  background-image: url(/assets/button-Photoroom.png); /* Add your background image here */
+  background-size: cover;
+  background-position: center;
+  display: flex; /* Use flexbox to center the content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  position: relative; /* Position relative for text shadow */
+  color: white; /* Set text color */
+  font-size: 30px; /* Adjust font size as needed */
 }
 
 .lives-container {
