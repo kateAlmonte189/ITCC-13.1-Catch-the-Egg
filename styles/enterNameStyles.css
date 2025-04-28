@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+.name-container {
+  width: 100%;
+  height: 100%;
+  padding: 100px;
+  background: linear-gradient(
+    0deg,
+    rgba(151, 50, 22, 0.8) 0%,
+    rgba(151, 50, 22, 0.8) 100%
+  );
+  overflow: hidden;
+  background-image: url(/assets/2727.jpg);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  display: inline-flex;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.name-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(151, 50, 22, 0.8) 0%,
+    rgba(151, 50, 22, 0.8) 100%
+  );
+  z-index: -1;
+}
+
+.name-content {
+  padding: 10px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.name-title {
+  text-align: center;
+  color: white;
+  font-size: 99px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.name-input-image {
+  width: 644px;
+  height: 296px;
+  position: relative;
+}
+
+.name-icon {
+  width: 152px;
+  height: 162px;
+}
+
+.input-container {
+  position: relative;
+  width: 644px;
+  height: 296px;
+  max-width: 100%;
+}
+
+.name-input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 40%;
+  background: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
+  color: #fff;
+  font-size: 50px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  z-index: 2;
+}
+
+.name-input::placeholder {
+  color: rgba(151, 50, 22, 0.6);
+}
+
+.playButton {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.playButton:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .name-container {
+    padding: 100px 50px;
+  }
+
+  .name-title {
+    font-size: 3dvh;
+  }
+
+  .name-input-image {
+    width: 500px;
+    height: auto;
+  }
+
+  .input-container {
+    width: 500px;
+    height: auto;
+  }
+
+  .name-input {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .name-container {
+    padding: 50px 20px;
+  }
+
+  .name-title {
+    font-size: 30px;
+  }
+
+  .name-input-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .name-icon {
+    width: 120px;
+    height: auto;
+  }
+
+  .input-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .name-input {
+    font-size: 24px;
+  }
+}
+
+/* Import base styles */
+@import url("base.css");
+
+/* Import name entry specific styles */
+@import url("nameEntry.css");

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catch the Egg - Enter Name</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles/enterNameStyles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,57 +13,31 @@
     />
   </head>
   <body>
-    <div
-      style="
-        width: 100%;
-        height: 100%;
-        padding: 150px;
-        background: linear-gradient(
-          0deg,
-          rgba(151, 50, 22, 0.8) 0%,
-          rgba(151, 50, 22, 0.8) 100%
-        );
-        overflow: hidden;
-        background-image: url(https://placehold.co/1440x1024);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-        display: inline-flex;
-      "
-    >
-      <div
-        style="
-          padding: 10px;
-          overflow: hidden;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          display: flex;
-        "
-      >
-        <div
-          style="
-            text-align: center;
-            color: white;
-            font-size: 99px;
-            font-family: Irish Grover;
-            font-weight: 400;
-            word-wrap: break-word;
-          "
-        >
-          Enter your name:
+    <div class="name-container">
+      <div class="name-content">
+        <div class="name-title">Enter your name:</div>
+        <div class="input-container">
+          <img
+            class="name-input-image"
+            src="/assets/button-Photoroom.png"
+            alt="Name input field"
+          />
+          <input
+            type="text"
+            id="playerName"
+            class="name-input"
+            maxlength="20"
+          />
         </div>
         <img
-          style="width: 644px; height: 296px; position: relative"
-          src="https://placehold.co/644x296"
-        />
-        <img
-          style="width: 152px; height: 162px"
-          src="https://placehold.co/152x162"
+          class="name-icon playButton"
+          src="/assets/play button.png"
+          alt="Play button"
+          onclick="startGame()"
         />
       </div>
     </div>
+
+    <script src="/script.js"></script>
   </body>
 </html>

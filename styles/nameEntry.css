@@ -1,0 +1,100 @@
+.name-container {
+  width: 100%;
+  min-height: 100vh; /* Changed from fixed height to min-height */
+  padding: 180px 150px; /* Increased padding to prevent cutoff */
+  background-image: url(/assets/2727.jpg);
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  display: flex; /* Changed from inline-flex to flex */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.name-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(151, 50, 22, 0.8) 0%,
+    rgba(151, 50, 22, 0.8) 100%
+  );
+  z-index: -1;
+}
+
+.name-content {
+  padding: 20px; /* Increased padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* Increased gap for more spacing */
+}
+
+.name-title {
+  text-align: center;
+  color: white;
+  font-size: 99px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-bottom: 20px; /* Added margin to prevent cutoff */
+}
+
+.name-input-image {
+  width: 644px;
+  height: auto; /* Changed to auto to maintain aspect ratio */
+  position: relative;
+  max-width: 100%; /* Added to ensure responsiveness */
+}
+
+.name-icon {
+  width: 152px;
+  height: 162px;
+  margin-top: 20px; /* Added margin to prevent cutoff */
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .name-container {
+    padding: 120px 50px; /* Increased padding */
+  }
+
+  .name-title {
+    font-size: 70px;
+  }
+
+  .name-input-image {
+    width: 500px;
+  }
+}
+
+.playButton {
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .name-container {
+    padding: 80px 20px; /* Increased padding */
+  }
+
+  .name-title {
+    font-size: 50px;
+  }
+
+  .name-input-image {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .name-icon {
+    width: 120px;
+    height: auto;
+  }
+}
