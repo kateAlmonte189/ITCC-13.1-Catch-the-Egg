@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+.game-container {
+  width: 100%;
+  height: 100%;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  overflow: hidden;
+  background-image: url(/assets/2727.jpg);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+  background-size: cover;
+}
+
+.header-container {
+  align-self: stretch;
+  height: 152px;
+  padding: 10px;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+}
+
+.scoreBlock {
+  width: 319.42px;
+  height: 134px;
+}
+
+.lives-container {
+  width: 787px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow: hidden;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  display: flex;
+}
+
+.life-icon {
+  width: 94px;
+  height: 94px;
+}
