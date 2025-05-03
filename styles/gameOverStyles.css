@@ -97,6 +97,11 @@ html {
   position: relative;
   background-size: cover;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1); /* Scale effect on hover */
 }
 
 .leaderboard-button {
@@ -114,6 +119,11 @@ html {
   gap: 10px;
   overflow: visible; /* Allow the button to display fully */
   cursor: pointer; /* Change cursor to pointer on hover */
+  transition: transform 0.2s ease;
+}
+
+.leaderboard-button:hover {
+  transform: scale(1.1); /* Scale effect on hover */
 }
 
 .leaderboard-text {

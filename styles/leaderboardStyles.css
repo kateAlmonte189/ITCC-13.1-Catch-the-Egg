@@ -1,0 +1,124 @@
+body,
+html {
+  overflow: hidden; /* Prevent scrolling on the entire page */
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+  height: 100%; /* Ensure body and html take full viewport height */
+  width: 100%;
+}
+
+.game-over-box {
+  flex-shrink: 1;
+  min-height: 0; /* Allows flex items to shrink below their default min-height */
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  background-image: url(/assets/with\ brown\ overlay.png); /* Ensure the correct image path */
+  background-size: cover; /* Ensures the image covers the container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  display: flex;
+  flex-direction: column; /* Changed to column to stack elements vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  gap: 30px; /* Increased gap between elements */
+}
+
+.leaderboard-section {
+  width: 600px; /* Set a fixed width for the board */
+  height: 400px; /* Set a fixed height for the board */
+  padding: 40px; /* Adjust padding for proper spacing */
+  overflow: hidden;
+  background-image: url(/assets/board-Photoroom.png); /* Ensure the correct image path */
+  background-size: contain; /* Ensure the image fits within the box */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center;
+  gap: 20px;
+  position: relative; /* Added for proper child positioning */
+}
+
+.leaderboard-title {
+  position: relative; /* Changed from absolute to relative */
+  margin-top: 25px; /* Add top margin to position properly within board */
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.menu-button {
+  width: 257px; /* Added width to match other buttons */
+  height: 112px;
+  padding: 2px 0;
+  position: relative;
+  overflow: hidden;
+  background-image: url(/assets/button-Photoroom.png);
+  background-size: contain; /* Ensure the image fits properly */
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px; /* Add bottom margin for spacing */
+  cursor: pointer; /* Add cursor pointer for better UX */
+  transition: transform 0.2s ease;
+}
+
+.menu-button:hover {
+  transform: scale(1.1);
+}
+
+.menu-text {
+  position: relative; /* Changed from absolute to relative */
+  text-align: center;
+  color: white;
+  font-size: 33px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+/* Add responsive styles */
+@media (max-height: 700px) {
+  .container {
+    gap: 15px;
+  }
+
+  .leaderboard-section {
+    height: 350px;
+    width: 525px;
+  }
+
+  .leaderboard-title {
+    font-size: 50px;
+    margin-top: 40px;
+  }
+
+  .menu-button {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 650px) {
+  .leaderboard-section {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 1.5/1; /* Maintain aspect ratio */
+  }
+
+  .leaderboard-title {
+    font-size: 50px;
+    margin-top: 30px;
+  }
+}

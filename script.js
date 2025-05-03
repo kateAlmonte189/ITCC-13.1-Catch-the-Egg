@@ -24,6 +24,11 @@ function tryAgain() {
   window.location.href = "gameProper.html";
 }
 
+function goToLeaderboard() {
+  // Redirect to the leaderboard page
+  window.location.href = "leaderboard.html";
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Select DOM elements
 const basketImage = new Image();
@@ -32,7 +37,7 @@ basketImage.src = "/assets/basket_noBG.png";
 const eggImage = new Image();
 eggImage.src = "/assets/egg_noBG.png";
 
-const gameContainer = document.querySelector("game-container");
+const gameContainer = document.querySelector(".game-container");
 const scoreElement = document.getElementById("score");
 const livesContainer = document.querySelector(".lives-container");
 
@@ -54,10 +59,10 @@ let gameInterval;
 function handleKeyDown(event) {
   const key = event.key;
   if (key === "ArrowLeft") {
-    basketPosition -= 20;
+    basketPosition -= 10; // Reduce from 20 to 10 for slower movement
     if (basketPosition < 0) basketPosition = 0;
   } else if (key === "ArrowRight") {
-    basketPosition += 20;
+    basketPosition += 10; // Reduce from 20 to 10 for slower movement
     if (basketPosition > gameContainer.offsetWidth - basket.offsetWidth) {
       basketPosition = gameContainer.offsetWidth - basket.offsetWidth;
     }
@@ -69,12 +74,18 @@ document.addEventListener("keydown", handleKeyDown);
 
 // Create egg element
 function createEgg() {
-  const egg = document.createElement("div");
-  egg.classList.add("egg");
-  egg.style.left = `${Math.random() * (gameContainer.offsetWidth - 30)}px`;
-  gameContainer.appendChild(egg);
-  console.log("Egg  created: ", egg);
-  return egg;
+  const existingEggs = document.querySelectorAll(".egg");
+
+  // Allow only up to 5 eggs at the same time
+  if (existingEggs.length < 5) {
+    const egg = document.createElement("div");
+    egg.style.top = "0px";
+    egg.classList.add("egg");
+    egg.style.left = `${Math.random() * (gameContainer.offsetWidth - 30)}px`;
+    gameContainer.appendChild(egg);
+    console.log("Egg created: ", egg);
+    return egg;
+  }
 }
 
 // Update game state
@@ -82,15 +93,16 @@ function updateGame() {
   const eggs = document.querySelectorAll(".egg");
   eggs.forEach((egg) => {
     const top = parseInt(egg.style.top || "0");
-    egg.style.top = `${top + 5}px`;
+    egg.style.top = `${top + 10}px`; // Adjust falling speed here
 
     // Check for collision with basket
     const eggRect = egg.getBoundingClientRect();
     const basketRect = basket.getBoundingClientRect();
     if (
       eggRect.bottom >= basketRect.top &&
-      eggRect.left >= basketRect.left &&
-      eggRect.right <= basketRect.right
+      eggRect.top <= basketRect.bottom &&
+      eggRect.right >= basketRect.left &&
+      eggRect.left <= basketRect.right
     ) {
       // Caught the egg
       score += 1;
@@ -111,16 +123,16 @@ function updateGame() {
 // End the game
 function endGame() {
   clearInterval(gameInterval);
-  alert("Game Over!");
+  window.location.href = "gameOver.html";
   // Redirect to game over scene or reset the game
 }
 
 // Start the game
 function startGame() {
   gameInterval = setInterval(() => {
-    createEgg();
+    createEgg(); // Create eggs only if less than 5 exist
     updateGame();
-  }, 500);
+  }, 500); // Adjust interval for egg creation
 }
 
 startGame();
