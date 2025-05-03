@@ -10,7 +10,21 @@ function startGame() {
   }
 }
 
-/////////////////////////////////
+function goToMainMenu() {
+  // Clear the player name from localStorage
+  localStorage.removeItem("playerName");
+  // Redirect to the main menu page
+  window.location.href = "index.html";
+}
+
+function tryAgain() {
+  // Clear the player name from localStorage
+  localStorage.removeItem("playerName");
+  // Redirect to the main menu page
+  window.location.href = "gameProper.html";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const gameContainer = document.querySelector(".game-container");
 const scoreElement = document.querySelector(".score");

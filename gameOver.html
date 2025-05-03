@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/gameOverStyles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>GameOver</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content-wrapper">
+        <div class="game-over-box">
+          <div class="game-over-text">
+            <span class="main-text"
+              >Game Over!<br />You ran out of lives<br
+            /></span>
+            <span class="spacer-text"><br /></span>
+            <span class="score-text">Your Score: {Score Here}</span>
+          </div>
+          <div class="icon-row">
+            <img
+              class="icon"
+              onClick="goToMainMenu()"
+              src="/assets/home button-Photoroom.png"
+            />
+            <img
+              class="icon"
+              onClick="tryAgain()"
+              src="/assets/replay button-Photoroom.png"
+            />
+          </div>
+        </div>
+        <div class="leaderboard-button">
+          <div class="leaderboard-text">Leaderboard</div>
+        </div>
+      </div>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>

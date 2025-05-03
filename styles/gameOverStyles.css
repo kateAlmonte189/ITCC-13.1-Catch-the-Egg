@@ -1,0 +1,129 @@
+body,
+html {
+  overflow: hidden; /* Prevent scrolling on the entire page */
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+  height: 100%; /* Ensure body and html take full viewport height */
+  width: 100%;
+}
+
+.game-over-box > * {
+  flex-shrink: 1;
+  min-height: 0; /* Allows flex items to shrink below their default min-height */
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  background-image: url(/assets/2111.w023.n001.1426B.p1.1426.jpg);
+  background-size: cover; /* Ensures the image covers the container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.content-wrapper {
+  width: 671px;
+  padding: 84px 50px;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-over-box {
+  width: 600px; /* Set a fixed width for the board */
+  height: 400px; /* Set a fixed height for the board */
+  padding: 40px; /* Adjust padding for proper spacing */
+  overflow: hidden;
+  background-image: url(/assets/board-Photoroom.png); /* Ensure the correct image path */
+  background-size: contain; /* Ensure the image fits within the box */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.game-over-text {
+  text-align: center;
+}
+
+.main-text {
+  color: white;
+  font-size: 44px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.spacer-text {
+  color: white;
+  font-size: 50px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.score-text {
+  color: white;
+  font-size: 34px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.icon-row {
+  width: 391px;
+  padding: 0 17px;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.leaderboard-button {
+  width: 257px;
+  height: 110px;
+  padding: 0; /* Remove extra padding */
+  position: relative;
+  background-image: url(/assets/button-Photoroom.png); /* Ensure the correct image path */
+  background-size: cover; /* Ensure the image covers the button */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow: visible; /* Allow the button to display fully */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.leaderboard-text {
+  position: absolute;
+  left: 45.5px;
+  top: 34px;
+  text-align: center;
+  color: white;
+  font-size: 28px;
+  font-family: "Irish Grover", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
