@@ -10,7 +10,6 @@
       href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap"
       rel="stylesheet"
     />
-
     <title>GameOver</title>
   </head>
   <body>
@@ -21,8 +20,9 @@
             <span class="main-text"
               >Game Over!<br />You ran out of lives<br
             /></span>
-            <span class="spacer-text"><br /></span>
-            <span class="score-text">Your Score: {Score Here}</span>
+            <span class="score-text"
+              >Your Score: <span id="score">0</span></span
+            >
           </div>
           <div class="icon-row">
             <img
@@ -42,6 +42,18 @@
         </div>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Retrieve the score from localStorage
+        const finalScore = localStorage.getItem("finalScore");
+
+        // Display the score in the #score element
+        const scoreElement = document.getElementById("score");
+        if (finalScore) {
+          scoreElement.textContent = finalScore;
+        }
+      });
+    </script>
     <script src="/script.js"></script>
   </body>
 </html>

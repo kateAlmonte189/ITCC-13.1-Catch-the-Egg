@@ -122,9 +122,12 @@ function updateGame() {
 
 // End the game
 function endGame() {
+  // Save the score to localStorage
+  localStorage.setItem("finalScore", score);
+
+  // Clear the game interval and redirect to the gameOver page
   clearInterval(gameInterval);
   window.location.href = "gameOver.html";
-  // Redirect to game over scene or reset the game
 }
 
 // Start the game
