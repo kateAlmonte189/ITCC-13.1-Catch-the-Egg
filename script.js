@@ -1,3 +1,24 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+const appSettings = {
+  databaseURL:
+    "https://catch-the-egg-dbs-default-rtdb.asia-southeast1.firebasedatabase.app/",
+};
+
+const app = initializeApp(appSettings);
+const database = getDatabase(app);
+const scoersInDB = ref(database, "scores");
+
+namePlayButton.addEventListener("click", function () {
+  let playerName = document.getElementById("playerName").value.trim();
+  console.log(`${playerName} clicked the play button`);
+  goToGameScene();
+});
+
 function goToGameScene() {
   const playerName = document.getElementById("playerName").value.trim();
   if (playerName) {
@@ -37,32 +58,47 @@ basketImage.src = "/assets/basket_noBG.png";
 const eggImage = new Image();
 eggImage.src = "/assets/egg_noBG.png";
 
-const gameContainer = document.querySelector(".game-container");
+const gameContainer = document.querySelector("#gameContainer");
 const scoreElement = document.getElementById("score");
-const livesContainer = document.querySelector(".lives-container");
+const livesContainer = document.getElementById("livesContainer");
 
-// Create basket element
 const basket = document.createElement("div");
 basket.classList.add("basket");
 gameContainer.appendChild(basket);
 
-// Set initial basket position
 let basketPosition = 200;
 basket.style.left = `${basketPosition}px`;
 
-// Game variables
 let score = 0;
 let lives = 3;
 let gameInterval;
 
-// Handle keyboard input
+let moveLeft = false;
+let moveRight = false;
+
 function handleKeyDown(event) {
-  const key = event.key;
-  if (key === "ArrowLeft") {
-    basketPosition -= 10; // Reduce from 20 to 10 for slower movement
+  if (event.key === "ArrowLeft") {
+    moveLeft = true;
+  } else if (event.key === "ArrowRight") {
+    moveRight = true;
+  }
+}
+
+function handleKeyUp(event) {
+  if (event.key === "ArrowLeft") {
+    moveLeft = false;
+  } else if (event.key === "ArrowRight") {
+    moveRight = false;
+  }
+}
+
+function moveBasket() {
+  if (moveLeft) {
+    basketPosition -= 10;
     if (basketPosition < 0) basketPosition = 0;
-  } else if (key === "ArrowRight") {
-    basketPosition += 10; // Reduce from 20 to 10 for slower movement
+  }
+  if (moveRight) {
+    basketPosition += 10;
     if (basketPosition > gameContainer.offsetWidth - basket.offsetWidth) {
       basketPosition = gameContainer.offsetWidth - basket.offsetWidth;
     }
@@ -71,31 +107,29 @@ function handleKeyDown(event) {
 }
 
 document.addEventListener("keydown", handleKeyDown);
+document.addEventListener("keyup", handleKeyUp);
 
-// Create egg element
+document.addEventListener("keydown", handleKeyDown);
+
 function createEgg() {
   const existingEggs = document.querySelectorAll(".egg");
-
-  // Allow only up to 5 eggs at the same time
   if (existingEggs.length < 5) {
     const egg = document.createElement("div");
     egg.style.top = "0px";
     egg.classList.add("egg");
     egg.style.left = `${Math.random() * (gameContainer.offsetWidth - 30)}px`;
     gameContainer.appendChild(egg);
-    console.log("Egg created: ", egg);
+    console.log("Egg created:", egg);
     return egg;
   }
 }
 
-// Update game state
 function updateGame() {
   const eggs = document.querySelectorAll(".egg");
   eggs.forEach((egg) => {
     const top = parseInt(egg.style.top || "0");
-    egg.style.top = `${top + 10}px`; // Adjust falling speed here
+    egg.style.top = `${top + 10}px`;
 
-    // Check for collision with basket
     const eggRect = egg.getBoundingClientRect();
     const basketRect = basket.getBoundingClientRect();
     if (
@@ -104,12 +138,10 @@ function updateGame() {
       eggRect.right >= basketRect.left &&
       eggRect.left <= basketRect.right
     ) {
-      // Caught the egg
       score += 1;
       scoreElement.textContent = score;
       egg.remove();
     } else if (top > gameContainer.offsetHeight) {
-      // Missed the egg
       egg.remove();
       lives -= 1;
       livesContainer.removeChild(livesContainer.lastElementChild);
@@ -120,19 +152,21 @@ function updateGame() {
   });
 }
 
-// End the game
 function endGame() {
   clearInterval(gameInterval);
   window.location.href = "gameOver.html";
-  // Redirect to game over scene or reset the game
 }
 
-// Start the game
 function startGame() {
+  console.log("Game started");
   gameInterval = setInterval(() => {
-    createEgg(); // Create eggs only if less than 5 exist
+    const eggsToCreate = Math.floor(Math.random() * 3) + 1;
+    for (let i = 0; i < eggsToCreate; i++) {
+      createEgg();
+    }
     updateGame();
-  }, 500); // Adjust interval for egg creation
+    moveBasket();
+  }, 50); // Reduced interval for smoother movement
 }
 
 startGame();
